@@ -10,8 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class IntroductionToSpringBoot1Application implements CommandLineRunner {
 
-	@Autowired
+	//@Autowired
 	NotificationService notificationService;
+
+	public IntroductionToSpringBoot1Application(NotificationService notificationService) {
+		this.notificationService=notificationService;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(IntroductionToSpringBoot1Application.class, args);
 

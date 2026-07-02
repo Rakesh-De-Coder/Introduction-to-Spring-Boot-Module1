@@ -3,7 +3,7 @@ package com.rakesh.IntroductionToSpringBoot1.impl;
 import com.rakesh.IntroductionToSpringBoot1.NotificationService;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class SmsNotificationService implements NotificationService {
 
 
