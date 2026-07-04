@@ -8,15 +8,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootApplication
 public class IntroductionToSpringBoot1Application implements CommandLineRunner {
 
+    @Autowired
+	Map<String,NotificationService>notificationServiceMap=new HashMap<>();
 
-	NotificationService notificationService;
-
-	public IntroductionToSpringBoot1Application( NotificationService notificationService) {
-		this.notificationService=notificationService;
-	}
+//	public IntroductionToSpringBoot1Application( NotificationService notificationService) {
+//		this.notificationService=notificationService;
+//	}
 
 
 	public static void main(String[] args) {
@@ -28,7 +31,12 @@ public class IntroductionToSpringBoot1Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		notificationService.sendMessage("Regarding our product purchase");
+		for(var notificationService:notificationServiceMap.entrySet()){
+			System.out.println("Bean Name is "+ notificationService.getKey());
+			System.out.println("Bean instance is" );
+			notificationService.getValue().sendMessage("Regarding our product purchase");
+		}
+
 
 
 
